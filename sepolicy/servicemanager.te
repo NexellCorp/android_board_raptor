@@ -1,0 +1,3 @@
+allow servicemanager installd:dir search;
+allow servicemanager installd:file { read open };
+allow servicemanager installd:process getattr;

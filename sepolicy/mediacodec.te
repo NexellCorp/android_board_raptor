@@ -1,0 +1,7 @@
+allow mediacodec rootfs:lnk_file getattr;
+
+# add by hcjun
+allow mediacodec sysfs:file read;
+allow mediacodec sysfs:file open;
+allow mediacodec sysfs:file getattr;
+

@@ -1,0 +1,2 @@
+allow cameraserver rootfs:lnk_file getattr;
+allow cameraserver gpu_device:chr_file { open read write getattr ioctl };

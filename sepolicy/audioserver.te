@@ -1,0 +1,2 @@
+allow audioserver rootfs:lnk_file getattr;
+allow audioserver sysfs:file { open read write getattr };

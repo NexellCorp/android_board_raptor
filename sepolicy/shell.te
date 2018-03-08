@@ -1,0 +1,5 @@
+allow shell device:dir { open read };
+allow shell debugfs:dir read;
+allow shell sysfs:file { open read getattr };
+allow shell system_prop:property_service set;
+allow shell usb_device:dir { open read search };

@@ -1,0 +1,15 @@
+allow installd shell_exec:file { getattr read execute open execute_no_trans };
+allow installd system_file:file execute_no_trans;
+allow installd zygote_exec:file { getattr execute read open execute_no_trans };
+allow installd servicemanager:binder call;
+allow installd dalvikcache_data_file:lnk_file { unlink read getattr };
+allow installd self:process execmem;
+allow installd ashmem_device:chr_file execute;
+allow installd account_service:service_manager find;
+allow installd user_service:service_manager find;
+allow installd package_service:service_manager find;
+allow installd system_server:binder call;
+allow installd self:tcp_socket { create setopt bind name_bind node_bind listen accept };
+allow installd self:capability net_raw;
+allow installd port:tcp_socket name_bind;
+allow installd node:tcp_socket node_bind;

@@ -1,0 +1,2 @@
+type rtw_fwloader_service,	service_manager_type;
+type usbmuxd_service,      service_manager_type;

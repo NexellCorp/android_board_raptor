@@ -1,0 +1,3 @@
+#============= recovery ==============
+allow recovery ffs_prop:property_service set;
+allow recovery gpu_device:chr_file { read write open ioctl };
