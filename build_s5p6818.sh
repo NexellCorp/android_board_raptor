@@ -484,10 +484,8 @@ fi
 if [ "${BUILD_ALL}" == "true" ] || [ "${BUILD_UBOOT}" == "true" ]; then
 	build_uboot ${UBOOT_DIR} ${TARGET_SOC} ${BOARD_NAME} aarch64-linux-gnu- artik710_raptor
 
-	if [ "${BUILD_UBOOT}" == "true" ]; then
-		build_optee ${OPTEE_DIR} "${OPTEE_BUILD_OPT}" build-fip-nonsecure
-		build_optee ${OPTEE_DIR} "${OPTEE_BUILD_OPT}" build-singleimage
-	fi
+	build_optee ${OPTEE_DIR} "${OPTEE_BUILD_OPT}" build-fip-nonsecure
+	build_optee ${OPTEE_DIR} "${OPTEE_BUILD_OPT}" build-singleimage
 fi
 
 if [ "${BUILD_ALL}" == "true" ] || [ "${BUILD_SECURE}" == "true" ]; then
