@@ -42,7 +42,7 @@ fi
 function build_bl1_artik7()
 {
 	print_build_info bl1
-	
+
 	local bl1_source=${BL1_SOURCE}
 	cd ${bl1_source}
 	make clean
