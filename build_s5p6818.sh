@@ -35,6 +35,10 @@ SECURE_BOOT=true
 FIP_SEC_SIZE=
 FIP_NONSEC_SIZE=
 
+if [ "${RSA_KEY}" == "none" ]; then
+	RSA_KEY=${DEVICE_DIR}/private_key.pem
+fi
+
 function build_bl1_artik7()
 {
 	print_build_info bl1
