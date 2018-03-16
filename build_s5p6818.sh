@@ -2,12 +2,17 @@
 
 set -e
 
+if [ "${MODULE}" == "none" ]; then
+	MODULE="artik710"
+fi
+
 CROSS_COMPILE="aarch64-linux-android-"
 CROSS_COMPILE32="arm-linux-gnueabihf-"
 
 OPTEE_BUILD_OPT="PLAT_DRAM_SIZE=1024 PLAT_UART_BASE=0xc00a3000 SECURE_ON=0 SUPPORT_ANDROID=1"
 OPTEE_BUILD_OPT+=" CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE32=${CROSS_COMPILE32}"
 OPTEE_BUILD_OPT+=" UBOOT_DIR=${UBOOT_DIR}"
+OPTEE_BUILD_OPT+=" BOARD_NAME=${MODULE}_${BOARD_NAME}"
 
 KERNEL_IMG=${KERNEL_DIR}/arch/arm64/boot/Image
 DTB_IMG=${KERNEL_DIR}/arch/arm64/boot/dts/nexell/s5p6818-artik710-raptor-rev03.dtb
@@ -20,6 +25,10 @@ DEVID_SDFS=4
 DEVID_UART=5
 PORT_EMMC=2
 PORT_SD=0
+if [ "${MODULE}" == "artik711s" ]; then
+	PORT_EMMC=0
+	PORT_SD=2
+fi
 DEVIDS=("usb" "spi" "nand" "sdmmc" "sdfs" "uart")
 PORTS=("emmc" "sd")
 
@@ -44,9 +53,13 @@ function build_bl1_artik7()
 	print_build_info bl1
 
 	local bl1_source=${BL1_SOURCE}
+	local ext_option=
+	if [ "${MODULE}" == "artik711s" ]; then
+		ext_option="MODULE=artik711s"
+	fi
 	cd ${bl1_source}
 	make clean
-	make BOARD=RAPTOR SECURE_ON=1
+	make BOARD=RAPTOR SECURE_ON=1 ${ext_option}
 	cd ${TOP}
 
 	print_build_done
@@ -128,6 +141,10 @@ function make_2ndboot_for_sd()
 	local aes_in_img=${gen_img}
 	local aes_out_img=bl1-sdboot.img
 
+	if [ "${MODULE}" == "artik711s" ]; then
+		file_name=raptor-sd2-32.txt
+	fi
+
 	local chip_name=$(echo -n ${TARGET_SOC} | awk '{print toupper($0)}')
 	local nsih=${bl1_source}/reference-nsih/${file_name}
 
@@ -161,6 +178,10 @@ function make_2ndboot_for_emmc()
 
 	local chip_name=$(echo -n ${TARGET_SOC} | awk '{print toupper($0)}')
 	local nsih=${bl1_source}/reference-nsih/${file_name}
+
+	if [ "${MODULE}" == "artik711s" ]; then
+		filename=raptor-emmc0-32.txt
+	fi
 
 	${BOOT_BINGEN_TOOL} -c ${chip_name} -t 2ndboot -n ${nsih} \
 		-i ${result_dir}/bl1-raptor.bin \
