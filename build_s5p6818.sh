@@ -16,6 +16,9 @@ OPTEE_BUILD_OPT+=" BOARD_NAME=${MODULE}_${BOARD_NAME}"
 
 KERNEL_IMG=${KERNEL_DIR}/arch/arm64/boot/Image
 DTB_IMG=${KERNEL_DIR}/arch/arm64/boot/dts/nexell/s5p6818-artik710-raptor-rev03.dtb
+if [ "${MODULE}" == "artik711s" ]; then
+	DTB_IMG=${KERNEL_DIR}/arch/arm64/boot/dts/nexell/s5p6818-artik711s-raptor-rev01.dtb
+fi
 
 DEVID_USB=0
 DEVID_SPI=1
@@ -175,13 +178,13 @@ function make_2ndboot_for_emmc()
 	local gen_img=bl1-emmcboot.bin.gen
 	local aes_in_img=${gen_img}
 	local aes_out_img=bl1-emmcboot.img
+	if [ "${MODULE}" == "artik711s" ]; then
+		file_name=raptor-emmc0-32.txt
+	fi
 
 	local chip_name=$(echo -n ${TARGET_SOC} | awk '{print toupper($0)}')
 	local nsih=${bl1_source}/reference-nsih/${file_name}
 
-	if [ "${MODULE}" == "artik711s" ]; then
-		filename=raptor-emmc0-32.txt
-	fi
 
 	${BOOT_BINGEN_TOOL} -c ${chip_name} -t 2ndboot -n ${nsih} \
 		-i ${result_dir}/bl1-raptor.bin \
@@ -487,7 +490,7 @@ function post_process_artik7()
 		gen_secure ${result_dir} fip-secure.bin ${private_key}
 	else
 		local prebuilt=${DEVICE_DIR}/prebuilt
-		cp ${prebuilt}/* ${result_dir}
+		cp ${prebuilt}/${MODULE}/* ${result_dir}
 		cp ${optee_build}/result/fip-nonsecure.bin ${result_dir}
 	fi
 
@@ -507,7 +510,7 @@ if [ "${BUILD_ALL}" == "true" ] || [ "${BUILD_BL1}" == "true" ]; then
 fi
 
 if [ "${BUILD_ALL}" == "true" ] || [ "${BUILD_UBOOT}" == "true" ]; then
-	build_uboot ${UBOOT_DIR} ${TARGET_SOC} ${BOARD_NAME} aarch64-linux-gnu- artik710_raptor
+	build_uboot ${UBOOT_DIR} ${TARGET_SOC} ${BOARD_NAME} aarch64-linux-gnu- ${MODULE}_raptor
 
 	if [ "${AES_KEY}" == "none" ]; then
 		mkdir -p ${TOP}/device/nexell/secure/arm-trusted-firmware/build/s5p6818/release
@@ -524,7 +527,7 @@ if [ "${BUILD_ALL}" == "true" ] || [ "${BUILD_SECURE}" == "true" ]; then
 fi
 
 if [ "${BUILD_ALL}" == "true" ] || [ "${BUILD_KERNEL}" == "true" ]; then
-	build_kernel ${KERNEL_DIR} ${TARGET_SOC} ${BOARD_NAME} artik710_raptor_nougat_defconfig ${CROSS_COMPILE}
+	build_kernel ${KERNEL_DIR} ${TARGET_SOC} ${BOARD_NAME} ${MODULE}_raptor_nougat_defconfig ${CROSS_COMPILE}
 	test -d ${OUT_DIR} && \
 		cp ${KERNEL_IMG} ${OUT_DIR}/kernel && \
 		cp ${DTB_IMG} ${OUT_DIR}/2ndbootloader
