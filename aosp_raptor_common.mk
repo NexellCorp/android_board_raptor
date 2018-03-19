@@ -24,7 +24,7 @@ PRODUCT_MODEL := AOSP on raptor
 PRODUCT_MANUFACTURER := NEXELL
 
 PRODUCT_COPY_FILES += \
-	device/nexell/raptor/fstab.raptor:root/fstab.raptor
+	device/nexell/raptor/fstab.raptor_$(MODULE):root/fstab.raptor
 
 PRODUCT_COPY_FILES += \
 	device/nexell/raptor/init.recovery.raptor.rc:root/init.recovery.raptor.rc
