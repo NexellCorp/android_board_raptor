@@ -97,3 +97,19 @@ BOARD_CAMERA_USE_ZOOM := true
 BOARD_CAMERA_SKIP_FRAME := 0
 
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
+
+# Wifi related defines (bcm43455)
+BOARD_WIFI_VENDOR := broadcom
+WPA_SUPPLICANT_VERSION := VER_0_8_X
+BOARD_WLAN_DEVICE := bcmdhd
+BOARD_WPA_SUPPLICANT_DRIVER := NL80211
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
+BOARD_HOSTAPD_DRIVER := NL80211
+BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
+WIFI_DRIVER_MODULE_PATH     := "/system/lib64/modules/dhd.ko"
+WIFI_DRIVER_MODULE_NAME     := "dhd"
+WIFI_DRIVER_MODULE_ARG      := "firmware_path=/system/vendor/firmware/fw_bcmdhd.bin nvram_path=/system/vendor/nvram.txt"
+WIFI_DRIVER_FW_PATH_PARAM   := "/sys/module/dhd/parameters/firmware_path"
+WIFI_DRIVER_FW_PATH_STA     := "/vendor/firmware/fw_bcmdhd.bin"
+WIFI_DRIVER_FW_PATH_P2P     := "/vendor/firmware/fw_bcmdhd.bin"
+WIFI_DRIVER_FW_PATH_AP      := "/vendor/firmware/fw_bcmdhd_apsta.bin"

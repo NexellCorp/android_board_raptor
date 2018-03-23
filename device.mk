@@ -202,4 +202,18 @@ PRODUCT_PROPERTY_OVERRIDES += \
 #skip boot jars check
 SKIP_BOOT_JARS_CHECK := true
 
+# Wifi related defines (bcm43455)
+PRODUCT_PACKAGES += \
+    libwpa_client \
+    hostapd \
+    wpa_supplicant \
+    wpa_supplicant.conf
+PRODUCT_COPY_FILES += \
+    device/nexell/kernel/kernel-4.4.x/drivers/net/wireless/bcmdhd/dhd.ko:/system/lib64/modules/dhd.ko \
+    frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+    frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml
+PRODUCT_PROPERTY_OVERRIDES += \
+    wifi.interface=wlan0
+$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm43455/device-bcm.mk)
+
 $(call inherit-product, frameworks/base/data/fonts/fonts.mk)
