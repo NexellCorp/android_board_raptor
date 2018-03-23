@@ -527,6 +527,8 @@ if [ "${BUILD_ALL}" == "true" ] || [ "${BUILD_SECURE}" == "true" ]; then
 fi
 
 if [ "${BUILD_ALL}" == "true" ] || [ "${BUILD_KERNEL}" == "true" ]; then
+	module_directory=${OUT_DIR}/system/lib64/modules
+	mkdir -p ${module_directory}
 	build_kernel ${KERNEL_DIR} ${TARGET_SOC} ${BOARD_NAME} ${MODULE}_raptor_nougat_defconfig ${CROSS_COMPILE}
 	test -d ${OUT_DIR} && \
 		cp ${KERNEL_IMG} ${OUT_DIR}/kernel && \
