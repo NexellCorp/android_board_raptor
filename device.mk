@@ -216,4 +216,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm43455/device-bcm.mk)
 
+
+# Bluetooth related defines (bcm43455)
+PRODUCT_COPY_FILES += \
+    device/nexell/raptor/bluetooth/BCM4345C0_003.001.025.0111.0205.hcd:$(TARGET_COPY_OUT_VENDOR)/firmware/bcm4345c0.hcd \
+    device/nexell/raptor/bluetooth/bt_vendor.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/bluetooth/bt_vendor.conf \
+    frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
+    frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml
+
 $(call inherit-product, frameworks/base/data/fonts/fonts.mk)

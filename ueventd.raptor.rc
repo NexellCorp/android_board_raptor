@@ -24,3 +24,8 @@
 /sys/devices/platform/c0000000.soc/c0040000.dwc2otg/sel_dr_mode	0666	system	system
 /sys/devices/platform/c0000000.soc/c0040000.dwc2otg/h_ddma_en	0666	system	system
 /sys/devices/platform/c0000000.soc/c0040000.dwc2otg/g_ddma_en	0666	system	system
+
+# BT
+/dev/ttySAC1	0660   bluetooth  net_bt_stack
+/sys/devices/platform/artik_bt_control/rfkill/rfkill0	state	0660	bluetooth	net_bt_stack
+/sys/devices/platform/artik_bt_control/rfkill/rfkill0	type	0660	bluetooth	net_bt_stack

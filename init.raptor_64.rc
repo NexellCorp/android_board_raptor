@@ -56,6 +56,19 @@ on boot
     write /proc/sys/net/core/rmem_max  8388608
     write /proc/sys/net/core/wmem_max  8388608
 
+    # bluetooth
+    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
+    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
+    chmod 0660 /sys/class/rfkill/rfkill0/state
+
+    # bluetooth LPM
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/lpm
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwrite
+
+    # bluetooth UART dev
+    chown bluetooth net_bt_stack /dev/ttySAC1
+    chmod 0660 /dev/ttySAC1
+
 on post-fs
     chmod 0755 /sys/kernel/debug/tracing
     chmod 0666 /sys/class/backlight/pwm-backlight/brightness
@@ -74,6 +87,9 @@ on post-fs-data
     mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
     mkdir /data/misc/dhcp 0770 dhcp dhcp
     chown dhcp dhcp /data/misc/dhcp
+
+    # bluetooth
+    mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
 
     chmod 0666 /data/system/users/0/wallpaper_orig
     chmod 0666 /data/system/users/0/wallpaper

@@ -57,9 +57,6 @@ endif
 # touch
 BOARD_USES_TSLIB := true
 
-# bluetooth
-BOARD_HAVE_BLUETOOTH := false
-
 BOARD_CHARGER_ENABLE_SUSPEND := false
 
 # sepolicy
@@ -113,3 +110,8 @@ WIFI_DRIVER_FW_PATH_PARAM   := "/sys/module/dhd/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_STA     := "/vendor/firmware/fw_bcmdhd.bin"
 WIFI_DRIVER_FW_PATH_P2P     := "/vendor/firmware/fw_bcmdhd.bin"
 WIFI_DRIVER_FW_PATH_AP      := "/vendor/firmware/fw_bcmdhd_apsta.bin"
+
+# Bluetooth related defines (bcm43455)
+BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_BCM := true
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/nexell/raptor/bluetooth
