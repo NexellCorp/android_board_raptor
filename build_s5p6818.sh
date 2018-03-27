@@ -562,7 +562,7 @@ if [ -f ${UBOOT_DIR}/u-boot.bin ]; then
 
 	UBOOT_RECOVERYCMD="ext4load mmc 0:6 0x49000000 recovery.dtb; ext4load mmc 0:6 0x40080000 recovery.kernel; ext4load mmc 0:6 0x48000000 ramdisk-recovery.img; booti 40080000 0x48000000:2d0fcb 0x49000000"
 
-	UBOOT_BOOTARGS="console=ttySAC3,115200n8 loglevel=7 printk.time=1 androidboot.hardware=raptor androidboot.console=ttySAC3 androidboot.serialno=0123456789abcdef drm_panel=gst7d0038"
+	UBOOT_BOOTARGS="console=ttySAC3,115200n8 loglevel=4 printk.time=1 androidboot.hardware=raptor androidboot.console=ttySAC3 androidboot.serialno=0123456789abcdef drm_panel=gst7d0038"
 
 	SPLASH_SOURCE="mmc"
 	SPLASH_OFFSET="0x2e4200"
