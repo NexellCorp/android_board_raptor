@@ -113,6 +113,8 @@ on property:sys.boot_completed=1
 
     write /sys/class/thermal/thermal_zone0/mode enabled
 
+    chmod 0777 /sys/devices/platform/c0000000.soc/c0101000.display_drm_tv/enable
+
 service p2p_supplicant /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
     -I/system/etc/wifi/p2p_supplicant_overlay.conf \
