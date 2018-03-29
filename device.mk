@@ -224,4 +224,9 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml
 
+# samples app for testing tvout
+PRODUCT_PACKAGES += \
+	ApiDemos \
+	DualDisplayTest
+
 $(call inherit-product, frameworks/base/data/fonts/fonts.mk)
