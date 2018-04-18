@@ -6,7 +6,8 @@
 /dev/block/mmcblk0p2 /system       ext4     rw                                                 wait
 /dev/block/mmcblk0p3 /cache        ext4     noatime,nosuid,nodev,nomblk_io_submit,errors=panic wait,check
 /dev/block/mmcblk0p5 /recovery     emmc     defaults                                           defaults
-/dev/block/mmcblk0p6 /data         ext4     noatime,nosuid,nodev,nomblk_io_submit,errors=panic wait,check
+/dev/block/mmcblk0p6 /misc	   emmc     defaults                                           defaults
+/dev/block/mmcblk0p7 /data         ext4     noatime,nosuid,nodev,nomblk_io_submit,errors=panic wait,check
 /devices/platform/c0000000.soc/c0069000.dw_mmc/mmc_host* auto auto defaults voldmanaged=sdcard1:auto,encryptable=userdata
 /devices/platform/c0000000.soc/c0030000.ehci/usb2* auto auto defaults voldmanaged=usb:auto,encryptable=userdata
 /devices/platform/c0000000.soc/c0040000.dwc2otg/usb1* auto auto defaults voldmanaged=usb:auto,encryptable=userdata

@@ -5,5 +5,6 @@ flash=mmc,0:bl1:2nd:0x200,0x2E4000:bootloader;
 flash=mmc,0:boot:emmc:0x4B0000,0x2000000:boot.img;
 flash=mmc,0:system:ext4:0x24B0000,0x60000000:system.img;
 flash=mmc,0:cache:ext4:0x624B0000,0x20000000:cache.img;
-flash=mmc,0:recovery:ext4:0x825B0000,0x2000000:recovery.img;
+flash=mmc,0:recovery:ext4:0x825B0000,0x1E00000:recovery.img;
+flash=mmc,0:misc:emmc:0x843B0000,0x200000:misc.img;
 flash=mmc,0:userdata:ext4:0x845B0000,0:userdata.img;
