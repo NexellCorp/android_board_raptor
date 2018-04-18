@@ -163,6 +163,21 @@
 
 	</CamcorderProfiles>
 
+	<CamcorderProfiles cameraId="1">
+		<EncoderProfile quality="1080p" fileFormat="mp4" duration="30">
+			<Video codec="h264"
+				bitRate="33000000"
+				width="1920"
+				height="1080"
+				frameRate="30" />
+
+			<Audio codec="aac"
+				bitRate="96000"
+				sampleRate="44100"
+				channels="1" />
+		</EncoderProfile>
+	</CamcorderProfiles>
+
 	<EncoderOutputFileFormat name="3gp" />
 	<EncoderOutputFileFormat name="mp4" />
 
