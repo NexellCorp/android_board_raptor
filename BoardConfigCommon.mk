@@ -28,7 +28,7 @@ TARGET_NO_RECOVERY := false
 # recovery
 TARGET_RELEASETOOLS_EXTENSIONS := device/nexell/raptor
 TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_nexell
-TARGET_RECOVERY_FSTAB := device/nexell/raptor/recovery.fstab
+TARGET_RECOVERY_FSTAB := device/nexell/raptor/fstab.raptor_$(MODULE)
 
 BOARD_USES_GENERIC_AUDIO := false
 BOARD_USES_ALSA_AUDIO := false
