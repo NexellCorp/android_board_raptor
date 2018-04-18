@@ -560,7 +560,8 @@ if [ -f ${UBOOT_DIR}/u-boot.bin ]; then
 		${OUT_DIR}/ramdisk.img \
 		"boot:emmc")
 
-	UBOOT_RECOVERYCMD="ext4load mmc 0:6 0x49000000 recovery.dtb; ext4load mmc 0:6 0x40080000 recovery.kernel; ext4load mmc 0:6 0x48000000 ramdisk-recovery.img; booti 40080000 0x48000000:2d0fcb 0x49000000"
+	recovery_ramdisk_size=$(printf "%x" $(ls -al ${OUT_DIR}/ramdisk-recovery.img | awk '{print $5}'))
+	UBOOT_RECOVERYCMD="ext4load mmc 0:5 0x49000000 recovery.dtb; ext4load mmc 0:5 0x40080000 recovery.kernel; ext4load mmc 0:5 0x48000000 ramdisk-recovery.img; booti 40080000 0x48000000:${recovery_ramdisk_size} 0x49000000"
 
 	UBOOT_BOOTARGS="console=ttySAC3,115200n8 loglevel=4 printk.time=1 androidboot.hardware=raptor androidboot.console=ttySAC3 androidboot.serialno=0123456789abcdef drm_panel=gst7d0038"
 
@@ -645,7 +646,7 @@ make_ext4_recovery_image \
 	${KERNEL_IMG} \
 	${DTB_IMG} \
 	${OUT_DIR}/ramdisk-recovery.img \
-	33554432 \
+	31457280 \
 	${RESULT_DIR}
 
 make_build_info ${RESULT_DIR}
