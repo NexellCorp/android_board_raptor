@@ -89,14 +89,14 @@ PRODUCT_DEFAULT_DEV_CERTIFICATE := device/nexell/raptor/signing_keys/release
 
 # camera
 # video device number for back camera
-BOARD_CAMERA_BACK_DEVICE := "6"
+BOARD_CAMERA_BACK_DEVICE := "6,8"
 # the orientation of the back video device
-BOARD_CAMERA_BACK_ORIENTATION := "0"
+BOARD_CAMERA_BACK_ORIENTATION := "0,0"
 # video device number for front camera
 BOARD_CAMERA_FRONT_DEVICE := "7"
 # the orientation of the front video device
 BOARD_CAMERA_FRONT_ORIENTATION := "0"
-BOARD_CAMERA_NUM := 2
+BOARD_CAMERA_NUM := 3
 BOARD_CAMERA_USE_ZOOM := true
 BOARD_CAMERA_SKIP_FRAME := 0
 
