@@ -19,4 +19,8 @@
 
 #define BTA_DISABLE_DELAY 100 /* in milliseconds */
 
+/* Enable A2DP sink */
+#define BTA_AV_SINK_INCLUDED TRUE
+#define USE_AUDIO_TRACK TRUE
+
 #endif
