@@ -201,6 +201,43 @@
 		<ImageDecoding memCap="20000000" />
 	</CamcorderProfiles>
 
+	<CamcorderProfiles cameraId="3">
+		<EncoderProfile quality="1080p" fileFormat="mp4" duration="30">
+			<Video codec="h264"
+				bitRate="33000000"
+				width="1920"
+				height="1080"
+				frameRate="30" />
+
+			<Audio codec="aac"
+				bitRate="96000"
+				sampleRate="44100"
+				channels="1" />
+		</EncoderProfile>
+		<ImageEncoding quality="90" />
+		<ImageEncoding quality="80" />
+		<ImageEncoding quality="70" />
+		<ImageDecoding memCap="20000000" />
+	</CamcorderProfiles>
+
+	<CamcorderProfiles cameraId="4">
+		<EncoderProfile quality="1080p" fileFormat="mp4" duration="30">
+			<Video codec="h264"
+				bitRate="33000000"
+				width="1920"
+				height="1080"
+				frameRate="30" />
+
+			<Audio codec="aac"
+				bitRate="96000"
+				sampleRate="44100"
+				channels="1" />
+		</EncoderProfile>
+		<ImageEncoding quality="90" />
+		<ImageEncoding quality="80" />
+		<ImageEncoding quality="70" />
+		<ImageDecoding memCap="20000000" />
+
 	<EncoderOutputFileFormat name="3gp" />
 	<EncoderOutputFileFormat name="mp4" />
 
